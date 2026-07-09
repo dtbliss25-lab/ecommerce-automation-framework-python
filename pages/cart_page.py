@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-from webdriver_manager.core import driver
 
 from pages.base_page import BasePage
 
@@ -8,7 +7,6 @@ class CartPage(BasePage):
 
     CART_ITEM = (By.CLASS_NAME, "cart_contents_container")
     CHECKOUT_BUTTON = (By.ID, "checkout")
-
 
     def __init__(self, driver):
         super().__init__(driver)
