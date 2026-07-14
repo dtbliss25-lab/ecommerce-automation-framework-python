@@ -31,15 +31,9 @@ class CartPage(BasePage):
 
     def is_cart_empty(self, driver):
 
-        WebDriverWait(driver, 5).until(
-            EC.url_contains("cart.html")
-        )
-
         cart_container = driver.find_element(By.CLASS_NAME, "cart_contents_container")
         cart_list = cart_container.find_element(By.CLASS_NAME, "cart_list")
         cart_item = cart_list.find_elements(By.CSS_SELECTOR, ".cart_item")
-        print(cart_item)
-        print("outside",len(cart_item))
         if cart_item == []:
 
             return cart_item
