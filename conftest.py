@@ -2,6 +2,7 @@ import pytest
 import allure
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 
 from utils.data_reader import read_json
 
@@ -17,7 +18,7 @@ def driver():
     options.add_argument("--window-size=1920,1080")
 
 
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(ChromeDriverManager().install())
 
     yield driver
 
