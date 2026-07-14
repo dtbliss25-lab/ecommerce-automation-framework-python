@@ -16,6 +16,10 @@ def driver():
     "profile.password_manager_enabled": False,
     "profile.password_manager_leak_detection": False
 })
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    
     driver = webdriver.Chrome(
         service=Service(ChromeDriverManager().install())
     )
