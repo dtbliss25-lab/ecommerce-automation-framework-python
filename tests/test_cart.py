@@ -58,4 +58,4 @@ def test_remove_product_from_cart(users_data, driver):
 
     cart_page.is_cart_empty(driver)
 
-    assert cart_page.is_cart_empty(driver) == [] , "Cart is empty"
+    assert cart_page.is_cart_empty(driver) == []
