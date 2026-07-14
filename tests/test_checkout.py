@@ -1,7 +1,5 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
-
-from pages import checkout_page
 from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
 from pages.inventory_page import InventoryPage
@@ -38,15 +36,17 @@ def test_checkout(users_data, driver):
     checkout_page = CheckoutPage(driver)
 
     WebDriverWait(driver, 5).until(
-        EC.presence_of_element_located(FIRST_NAME)
-        )
+        EC.url_contains("checkout-step-one.html")
+    )
 
-    checkout_page.continue_checkout(
+    checkout_page.continue_checkout( driver,
         "John",
         "Smith",
         "3000"
     )
-
+    WebDriverWait(driver, 5).until(
+        EC.url_contains("checkout-step-two.html")
+    )
     checkout_page.click_finish()
 
     WebDriverWait(driver, 5).until(

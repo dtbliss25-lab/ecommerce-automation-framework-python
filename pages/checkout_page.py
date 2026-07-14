@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
-
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from pages.base_page import BasePage
 
 class CheckoutPage(BasePage):
@@ -27,10 +28,13 @@ class CheckoutPage(BasePage):
     def click_continue(self):
         self.click(self.CONTINUE_BUTTON)
 
-    def continue_checkout(self, firstname, lastname, postalcode):
-        self.enter_firstname(self.FIRST_NAME)
-        self.enter_lastname(self.LAST_NAME)
-        self.enter_postalcode(self.POSTAL_CODE)
+    def continue_checkout(self, driver, FIRST_NAME, LAST_NAME, POSTAL_CODE):
+        WebDriverWait(driver, 5).until(
+            EC.url_contains("checkout-step-one.html")
+        )
+        self.enter_firstname(FIRST_NAME)
+        self.enter_lastname(LAST_NAME)
+        self.enter_postalcode(POSTAL_CODE)
         self.click_continue()
 
     def click_finish(self):
