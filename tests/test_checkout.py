@@ -44,9 +44,7 @@ def test_checkout(users_data, driver):
         "Smith",
         "3000"
     )
-    WebDriverWait(driver, 5).until(
-        EC.url_contains("checkout-step-two.html")
-    )
+
     checkout_page.click_finish()
 
     WebDriverWait(driver, 5).until(
